@@ -29,7 +29,8 @@ const parseRawPatternString = (str) =>
     .split("<svg ")[1]
     .split("</title>")[1]
     .split("</svg>")[0]
-    .replaceAll(`fill="none" stroke="#000000" stroke-width="0.72"`, "");
+    .split(`fill="none" stroke="#000000" stroke-width="0.72"`)
+    .join("");
 
 export default [
   patternA,

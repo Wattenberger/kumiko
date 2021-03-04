@@ -360,7 +360,7 @@
     position: absolute;
     left: -100vw;
   }
-  .thinking {
+  /* .thinking {
     position: absolute;
     top: 1em;
     right: 1em;
@@ -378,6 +378,6 @@
     z-index: 100;
   }
   .group {
-    /* transform-origin: 144.5px 255px;  */
-  }
+    } */
+  /* transform-origin: 144.5px 255px;  */
 </style>
