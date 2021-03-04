@@ -24,13 +24,17 @@ import patternW from "./patterns/w.svg";
 import patternX from "./patterns/x.svg";
 import patternY from "./patterns/y.svg";
 
-const parseRawPatternString = (str) =>
-  str
+const parseRawPatternString = (str) => {
+  const viewBoxSplit = str
     .split("<svg ")[1]
-    .split("</title>")[1]
-    .split("</svg>")[0]
-    .split(`fill="none" stroke="#000000" stroke-width="0.72"`)
-    .join("");
+    .split(/viewBox=\"([\d. ]){4,}\">/)[2];
+  return viewBoxSplit
+    ? viewBoxSplit
+        .split("</svg>")[0]
+        .split(`fill="none" stroke="#000" stroke-width=".72"`)
+        .join("")
+    : "";
+};
 
 export default [
   patternA,

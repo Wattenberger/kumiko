@@ -13,6 +13,7 @@
   export let exportStr;
   export let contrast;
   export let brightness;
+  export let zoomLevel;
 
   const imgUrl = "/assets/obama.png";
   let customFiles = [];
@@ -74,31 +75,38 @@
   </div>
   <div class="control">
     <div class="label">
-      triangleWidth
+      triangle width
       <div class="value">{triangleWidth}</div>
     </div>
     <input type="range" bind:value="{triangleWidth}" min="20" max="100" />
   </div>
   <div class="control">
     <div class="label">
-      lineWidth
+      line width
       <div class="value">{lineWidth}</div>
     </div>
     <input type="range" bind:value="{lineWidth}" min="1" max="30" />
   </div>
   <div class="control">
     <div class="label">
-      contrast
+      image contrast
       <div class="value">{contrast}</div>
     </div>
     <input type="range" bind:value="{contrast}" min="0" max="5" step="0.01" />
   </div>
   <div class="control">
     <div class="label">
-      brightness
+      image brightness
       <div class="value">{brightness}</div>
     </div>
     <input type="range" bind:value="{brightness}" min="0" max="2" step="0.01" />
+  </div>
+  <div class="control">
+    <div class="label">
+      zoom
+      <div class="value">{zoomLevel}</div>
+    </div>
+    <input type="range" bind:value="{zoomLevel}" min="0" max="3" step="1" />
   </div>
   <div class="control">
     <button on:click="{onDownload}">Download SVG</button>

@@ -18,6 +18,7 @@
   export let exportStr = "";
   export let contrast = 0;
   export let brightness = 0;
+  export let zoomLevel = 2;
 
   $: filtersId = [brightness, contrast].join("--");
 
@@ -115,7 +116,7 @@
     let x2 = triangleWidth;
     const y1 = 0;
     const y2 = triangleHalfHeight;
-    const y3 = triangleHalfHeight * 2;
+    const y3 = triangleHeight;
     let topLeftCorner = [x1, y1];
     if (isInverted) [x1, x2] = [x2, x1];
 
@@ -283,7 +284,7 @@
 
 <div class="wrapper" class:is-thinking="{isThinking}">
   <div class="canvas-wrapper" bind:clientWidth="{wrapperWidth}">
-    <div class="canvas">
+    <div class="canvas zoom--{zoomLevel}">
       <canvas
         id="canvas-id"
         bind:this="{canvasElement}"
@@ -338,6 +339,8 @@
   }
   .canvas {
     position: relative;
+    transform-origin: center top;
+    transition: all 0.3s ease-out;
   }
   .canvas canvas {
     width: 100%;
@@ -362,6 +365,15 @@
   .dummy {
     position: absolute;
     left: -100vw;
+  }
+  .zoom--0 {
+    transform: scale(0.4);
+  }
+  .zoom--1 {
+    transform: scale(0.7);
+  }
+  .zoom--3 {
+    transform: scale(1.3);
   }
   /* .thinking {
     position: absolute;

@@ -10,6 +10,7 @@
   let imageOpacity = 0.6;
   let contrast = 1;
   let brightness = 1;
+  let zoomLevel = 2;
 
   let isDropping = false;
   let droppedFiles = null;
@@ -55,6 +56,7 @@
     bind:droppedFiles
     bind:contrast
     bind:brightness
+    bind:zoomLevel
     {exportStr} />
   <Canvas
     {image}
@@ -63,12 +65,14 @@
     {lineWidth}
     {contrast}
     {brightness}
+    {zoomLevel}
     bind:exportStr />
 </div>
 
 <style>
   .wrapper {
     position: relative;
+    padding-bottom: 10em;
   }
   .dropping {
     position: absolute;
