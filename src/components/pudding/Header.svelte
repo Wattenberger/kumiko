@@ -4,7 +4,9 @@
 
 <header>
   <div class="wordmark">
-    <a href="https://pudding.cool">{@html wordmark}</a>
+    <a href="https://wattenberger.com">
+      {@html wordmark}
+    </a>
   </div>
 </header>
 
@@ -16,10 +18,5 @@
 
   .wordmark a {
     border: none;
-    color: var(--fg);
-  }
-
-  .wordmark a:hover {
-    background-color: transparent;
   }
 </style>

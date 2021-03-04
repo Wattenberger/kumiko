@@ -1,14 +1,21 @@
 <script>
   import Meta from "./Meta.svelte";
   import Header from "./pudding/Header.svelte";
-  import Demo from "./demo/Demo.svelte";
+  import Wrapper from "./Wrapper.svelte";
   import Footer from "./pudding/Footer.svelte";
 </script>
 
 <Meta />
 
 <Header />
-
-<Demo />
+I was inspired by
+<a
+  href="https://www.youtube.com/watch?v=-NuqwJz9RNE"
+  target="_blank"
+  rel="noopener">
+  this video
+</a>
+.
+<Wrapper />
 
 <Footer />
