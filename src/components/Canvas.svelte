@@ -263,12 +263,15 @@
         stroke-width="${lineWidth}">`,
 
       ...triangles.map(
-        ({ indices, patternIndex, isInverted, rotation }, i) =>
+        ({ indices, patternIndex, isInverted, rotation, offset }, i) =>
           `<g
-          transform="translate(${(indices[0] || 0) *
-            initialTriangleDimensions[0]},
-            ${(indices[1] || 0) *
-              (initialTriangleDimensions[1] / 2)}) rotate(${rotation} 145 125)">
+
+            transform="translate(${(indices[0] || 0) *
+              initialTriangleDimensions[0] +
+              offset[0]},
+            ${(indices[1] || 0) * (initialTriangleDimensions[1] / 2) +
+              offset[1]})
+            rotate(${rotation} 145 125)">
             ${patterns[patternIndex]}
           </g>`
       ),
@@ -277,8 +280,6 @@
   };
   $: triangles, activePatterns, lineWidth, updateExportStr();
 </script>
-
-<PatternPicker bind:activePatterns {lineWidth} />
 
 <div class="wrapper" class:is-thinking="{isThinking}">
   <div class="canvas-wrapper" bind:clientWidth="{wrapperWidth}">
@@ -314,6 +315,7 @@
 
     </div>
   </div>
+  <PatternPicker bind:activePatterns {lineWidth} />
 
 </div>
 
@@ -325,6 +327,7 @@
 
 <style>
   .wrapper {
+    display: flex;
     transition: opacity 0.3s ease-out;
   }
   .canvas-wrapper {

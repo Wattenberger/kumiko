@@ -66,24 +66,26 @@
 
 <div class="patterns" class:is-thinking="{isThinking}">
   <div class="title">Patterns</div>
-  {#each allPatterns as { i, darkness, start, end } (i)}
-    <button
-      class="pattern"
-      class:inactive="{!activePatternNames.includes(i)}"
-      on:click="{() => onTogglePattern(i)}">
-      <!-- {(darkness + '').slice(0, 5)} -->
-      <!-- <div>
+  <div class="list">
+    {#each allPatterns as { i, darkness, start, end } (i)}
+      <button
+        class="pattern"
+        class:inactive="{!activePatternNames.includes(i)}"
+        on:click="{() => onTogglePattern(i)}">
+        <!-- {(darkness + '').slice(0, 5)} -->
+        <!-- <div>
         {(((activePatterns.find(d => d.i == i) || {}).start || '') + '').slice(0, 3)}
         - {(((activePatterns.find(d => d.i == i) || {}).end || '') + '').slice(0, 3)}
       </div> -->
-      <svg
-        viewBox="0 0 {initialTriangleDimensions[0]}
-        {initialTriangleDimensions[1]}"
-        style="stroke-width: {lineWidth}">
-        {@html patterns[i]}
-      </svg>
-    </button>
-  {/each}
+        <svg
+          viewBox="0 0 {initialTriangleDimensions[0]}
+          {initialTriangleDimensions[1]}"
+          style="stroke-width: {lineWidth}">
+          {@html patterns[i]}
+        </svg>
+      </button>
+    {/each}
+  </div>
 </div>
 
 <canvas
@@ -94,13 +96,16 @@
 
 <style>
   .patterns {
-    position: fixed;
+    position: sticky;
     top: 8em;
     right: 0;
     width: 5em;
+    height: min-content;
+    z-index: 200;
+  }
+  .list {
     max-height: calc(100vh - 11em);
     overflow: auto;
-    z-index: 200;
   }
   .is-thinking {
     opacity: 0.3;
@@ -144,5 +149,9 @@
   .title {
     text-align: center;
     font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    margin-right: 0.5em;
   }
 </style>

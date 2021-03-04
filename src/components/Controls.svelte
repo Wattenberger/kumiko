@@ -37,14 +37,14 @@
   getImage();
 
   const onDownload = () => {
-    console.log({ exportStr });
     const svgBlob = new Blob([exportStr], {
       type: "image/svg+xmlcharset=utf-8"
     });
     const svgUrl = URL.createObjectURL(svgBlob);
     const downloadLink = document.createElement("a");
     downloadLink.href = svgUrl;
-    downloadLink.download = "Kumiko_pattern.svg";
+    const date = new Date().toDateString();
+    downloadLink.download = `Kumiko_pattern ${date}.svg`;
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
