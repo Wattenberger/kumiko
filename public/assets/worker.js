@@ -108,10 +108,10 @@ const updateTriangles = ({
 
         const activePixelDarknesses = indices.map((i) => {
           const [r, g, b, a] = activePixels[i] || [];
-          return ((a / 255) * sum([r, g, b])) / 3;
+          return (a / 255) * (255 - sum([r, g, b]) / 3);
         });
         const averageDarkness =
-          1 - sum(activePixelDarknesses) / activePixelDarknesses.length / 255;
+          sum(activePixelDarknesses) / activePixelDarknesses.length / 255;
         let closestPatternIndex = getClosestPatternIndex(averageDarkness);
         // if (averageDarkness == 1) debugger;
         if (averageDarkness < 0.001) return;
