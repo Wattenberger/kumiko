@@ -47,7 +47,7 @@ const updateTriangles = ({
 
   const getClosestPatternIndex = (darkness) => {
     const bucket =
-      patternDarknesses.find((d) => d.start <= darkness && d.end > darkness) ||
+      patternDarknesses.find((d) => d.start <= darkness && d.end >= darkness) ||
       {};
     return bucket.i || 0;
   };
@@ -113,7 +113,8 @@ const updateTriangles = ({
         const averageDarkness =
           1 - sum(activePixelDarknesses) / activePixelDarknesses.length / 255;
         let closestPatternIndex = getClosestPatternIndex(averageDarkness);
-        if (averageDarkness == 1 || averageDarkness < 0.001) return;
+        // if (averageDarkness == 1) debugger;
+        if (averageDarkness < 0.001) return;
         // if (columnIndex == 3 && triangleIndex == 10) debugger;
 
         triangles.push({
