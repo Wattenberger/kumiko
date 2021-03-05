@@ -90,7 +90,7 @@ const updateTriangles = ({
         // (i) * n + j
 
         const pixelIndexStart =
-          Math.round(topLeftCorner[1]) * Math.round(width) +
+          Math.round(topLeftCorner[1]) * Math.floor(width) +
           Math.round(topLeftCorner[0]);
         const pixelIndexEnd = pixelIndexStart + numberOfPixelsPerTriangle;
 
