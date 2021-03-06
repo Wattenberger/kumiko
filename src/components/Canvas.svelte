@@ -264,15 +264,12 @@
         stroke-width="${lineWidth}">`,
 
       ...triangles.map(
-        ({ indices, patternIndex, isInverted, rotation, offset }, i) =>
-          `<g
-
-            transform="translate(${(indices[0] || 0) *
-              initialTriangleDimensions[0] +
-              offset[0]},
-            ${(indices[1] || 0) * (initialTriangleDimensions[1] / 2) +
-              offset[1]})
-            rotate(${rotation} 145 125)">
+        ({ indices, patternIndex, isInverted, rotation, scaleY, offset }, i) =>
+          `<g transform="translate(${(indices[0] || 0) *
+            initialTriangleDimensions[0] +
+            offset[0]}, ${(indices[1] || 0) *
+            (initialTriangleDimensions[1] / 2) +
+            offset[1]}) scale(1 ${scaleY}) rotate(${rotation} 145 125)">
             ${patterns[patternIndex]}
           </g>`
       ),
@@ -296,12 +293,12 @@
         {height}
         style="stroke-width: {lineWidth}; transform: translate(-{triangleWidth * 0.3}px,
         -{triangleWidth * 0.3}px">
-        {#each triangles as { indices, patternIndex, rotation, offset }, i (i)}
+        {#each triangles as { indices, patternIndex, rotation, scaleY, offset }, i (i)}
           <g
             class="group"
             transform="translate({(indices[0] || 0) * initialTriangleDimensions[0] + offset[0]},
             {(indices[1] || 0) * (initialTriangleDimensions[1] / 2) + offset[1]})
-            rotate({rotation} 145 125)"
+            scale(1 {scaleY}) rotate({rotation} 145 125)"
             in:fly="{{ y: 10 }}">
             {@html patterns[patternIndex]}
           </g>

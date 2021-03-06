@@ -51,6 +51,52 @@ const updateTriangles = ({
       {};
     return bucket.i || 0;
   };
+  const getModifiedTriangle = (triangle) => {
+    let { patternIndex = 0, indices = [], rawRotation } = triangle;
+
+    let rotation = rawRotation;
+    let scaleY = 1;
+
+    const flippedPatternIndices = [39];
+
+    let offset = [0, 0];
+    if (rotation == 330) {
+      offset = [-62, -33];
+    } else if (rotation == 30) {
+      offset = [65, -33];
+    } else if (rotation == 90) {
+      offset = [0, 5];
+    } else if (rotation == 150) {
+      offset = [65, 39];
+    } else if (rotation == 210) {
+      offset = [-63, 36];
+    } else if (rotation == 270) {
+      offset = [2, 2];
+    }
+
+    if (
+      flippedPatternIndices.includes(patternIndex) &&
+      (indices[0] + indices[1]) % 2 == 0
+    ) {
+      if (rotation == 330) {
+        rotation = 210;
+        offset = [-63, 216];
+      } else if (rotation == 210) {
+        rotation = 330;
+        offset = [-63, 288];
+      } else if (rotation == 90) {
+        offset = [0, 251];
+      }
+      scaleY = -1;
+    }
+
+    return {
+      ...triangle,
+      offset,
+      rotation,
+      scaleY,
+    };
+  };
 
   if (!cachedTriangles) {
     const numbersPerPixel = ratio * 4;
@@ -59,26 +105,6 @@ const updateTriangles = ({
     getRange(numberOfColumns).forEach((columnIndex) => {
       getRange(numberOfTrianglesHigh).forEach((triangleIndex) => {
         const isInverted = !!(columnIndex % 2);
-        let offset = [0, 0];
-
-        const rotations = [330, 150, 90, 30, 210, 270];
-
-        const rotationIndex = ((triangleIndex % 6) + (isInverted ? 3 : 0)) % 6;
-        const rotation = rotations[rotationIndex];
-
-        if (rotation == 330) {
-          offset = [-62, -33];
-        } else if (rotation == 30) {
-          offset = [65, -33];
-        } else if (rotation == 90) {
-          offset = [0, 5];
-        } else if (rotation == 150) {
-          offset = [65, 39];
-        } else if (rotation == 210) {
-          offset = [-63, 36];
-        } else if (rotation == 270) {
-          offset = [2, 2];
-        }
 
         let x1 = columnIndex * triangleWidth;
         let x2 = (columnIndex + 1) * triangleWidth;
@@ -117,7 +143,12 @@ const updateTriangles = ({
         if (averageDarkness < 0.001) return;
         // if (columnIndex == 3 && triangleIndex == 10) debugger;
 
-        triangles.push({
+        const rotations = [330, 150, 90, 30, 210, 270];
+
+        const rotationIndex = ((triangleIndex % 6) + (isInverted ? 3 : 0)) % 6;
+        const rawRotation = rotations[rotationIndex];
+
+        const newTriangle = getModifiedTriangle({
           // points: [
           //   [x1, y1],
           //   [x2, y2],
@@ -129,16 +160,17 @@ const updateTriangles = ({
           isInverted,
           indices: [columnIndex, triangleIndex],
           patternIndex: closestPatternIndex,
-          rotation,
-          offset,
+          rawRotation,
         });
+
+        triangles.push(newTriangle);
         postMessage({ triangles });
       });
     });
   } else {
     triangles = cachedTriangles.map((triangle) => {
       const patternIndex = getClosestPatternIndex(triangle["averageDarkness"]);
-      return { ...triangle, patternIndex };
+      return getModifiedTriangle({ ...triangle, patternIndex });
     });
   }
 

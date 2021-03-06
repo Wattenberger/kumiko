@@ -41,5 +41,10 @@
     "deploy": "rollup -c rollup.config-ssr.js",
     "start": "sirv public"
   },
-  "dependencies": {}
+  "dependencies": {
+    "paper": "^0.12.11",
+    "paper-clipper": "^1.0.2",
+    "paper-jsdom": "^0.12.11",
+    "svg-outline-stroke": "^1.3.0"
+  }
 }

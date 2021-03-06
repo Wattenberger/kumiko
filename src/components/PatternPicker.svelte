@@ -3,7 +3,7 @@
   import { getRange } from "./../utils";
 
   export let isThinking = false;
-  export let activePatterns = [];
+  export let activePatterns;
   export let lineWidth = 0;
 
   let allPatterns = [];
