@@ -5,6 +5,7 @@
   export let isThinking = false;
   export let activePatterns;
   export let lineWidth = 0;
+  export let triangles = [];
 
   let allPatterns = [];
   let activePatternNames = [8, 4, 11, 12, 7, 19, 20];
@@ -62,6 +63,18 @@
       activePatternNames = [...activePatternNames, i];
     }
   };
+
+  const getCounts = () => {
+    let runningCounts = {};
+    triangles.forEach(({ patternIndex }) => {
+      if (!runningCounts[patternIndex]) runningCounts[patternIndex] = 0;
+      runningCounts[patternIndex]++;
+    });
+    return runningCounts;
+    // return Object.keys(runningCounts).map(i => runningCounts[i]);
+  };
+  let counts = {};
+  $: triangles, (counts = getCounts());
 </script>
 
 <div class="patterns" class:is-thinking="{isThinking}">
@@ -83,6 +96,9 @@
           style="stroke-width: {lineWidth}">
           {@html patterns[i]}
         </svg>
+        {#if activePatternNames.includes(i)}
+          <div class="count">{counts[i] || 0}</div>
+        {/if}
       </button>
     {/each}
   </div>
@@ -112,6 +128,7 @@
     pointer-events: none;
   }
   .pattern {
+    position: relative;
     appearance: none;
     background: none;
     border: 1px solid transparent;
@@ -153,5 +170,18 @@
     letter-spacing: 0.06em;
     white-space: nowrap;
     margin-right: 0.5em;
+  }
+
+  .count {
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    min-width: 1.9em;
+    padding: 0.38em 0.6em;
+    background: var(--accent-dark);
+    color: white;
+    font-size: 0.6em;
+    border-radius: 2em;
+    font-feature-settings: "tnum", 1;
   }
 </style>

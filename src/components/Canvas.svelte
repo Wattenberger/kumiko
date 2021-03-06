@@ -313,7 +313,7 @@
 
     </div>
   </div>
-  <PatternPicker bind:activePatterns {lineWidth} />
+  <PatternPicker bind:activePatterns {lineWidth} {triangles} />
 
 </div>
 
