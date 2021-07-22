@@ -11,7 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Update diagram
-        uses: githubocto/repo-visualizer@v0.1
+        uses: githubocto/repo-visualizer@main
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
