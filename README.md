@@ -1,5 +1,7 @@
 # Svelte Starter
 
+![Repo diagram test](./diagram-test.svg)
+
 ![Repo diagram](./diagram.svg)
 
 This [starter template](https://github.com/the-pudding/svelte-starter) aims for fast and easy web development with HMR, and pre-rendered HTML for optimal static hosting.
