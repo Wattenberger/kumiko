@@ -14,3 +14,4 @@ jobs:
         uses: githubocto/repo-visualizer@update-diagram
         with:
           excluded_paths: "docs,.vscode,.gitignore,.nvmrc,.prettierrc"
+          max_depth: 2
