@@ -14,3 +14,4 @@ jobs:
         uses: githubocto/repo-visualizer@max-depth
         with:
           excluded_paths: "docs,.vscode,.gitignore,.nvmrc,.prettierrc"
+          color_encoding: "number-of-changes"
