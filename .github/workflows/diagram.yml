@@ -11,6 +11,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Update diagram
-        uses: githubocto/repo-visualizer@main
+        uses: githubocto/repo-visualizer@0.3.0
         with:
           excluded_paths: "docs,.vscode,.gitignore,.nvmrc,.prettierrc"
