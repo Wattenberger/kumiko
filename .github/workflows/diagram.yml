@@ -14,5 +14,4 @@ jobs:
         uses: hydrosquall/repo-visualizer@cameron.yick/feature/ignore-files-and-folders
         with:
           excluded_paths: "docs,.vscode,.gitignore,.nvmrc,.prettierrc"
-          excluded_globs: "scripts/*.svg"
           commit_message: "Update diagram [skip ci]"
