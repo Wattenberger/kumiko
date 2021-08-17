@@ -11,8 +11,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Update diagram
-        uses: hydrosquall/repo-visualizer@cameron.yick/feature/ignore-files-and-folders
+        uses: githubocto/repo-visualizer@main
         with:
           excluded_paths: "docs,.vscode,.gitignore,.nvmrc,.prettierrc"
           commit_message: "Update diagram [skip ci]"
-          excluded_globs: "scripts/*.js"
+          excluded_globs: "scripts/**.*"
