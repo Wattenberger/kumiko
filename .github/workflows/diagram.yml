@@ -11,10 +11,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Update diagram
-        uses: ageorgou/repo-visualizer@allow-no-commit
+        uses: ageorgou/repo-visualizer@build-catch
         with:
           excluded_paths: "docs,.vscode,.gitignore,.nvmrc,.prettierrc"
           commit_message: "Update diagram [skip ci]"
           excluded_globs: "scripts/**.*"
-          push: false
-          artifact_name: "artifact"
