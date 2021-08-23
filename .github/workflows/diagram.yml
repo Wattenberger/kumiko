@@ -17,3 +17,4 @@ jobs:
           commit_message: "Update diagram [skip ci]"
           excluded_globs: "scripts/**.*"
           push: false
+          artifact_name: "artifact"
