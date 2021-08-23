@@ -16,3 +16,4 @@ jobs:
           excluded_paths: "docs,.vscode,.gitignore,.nvmrc,.prettierrc"
           commit_message: "Update diagram [skip ci]"
           excluded_globs: "scripts/**.*"
+          push: false
