@@ -16,7 +16,7 @@ jobs:
           excluded_paths: "docs,.vscode,.gitignore,.nvmrc,.prettierrc"
           commit_message: "Update diagram [skip ci]"
           excluded_globs: "scripts/**.*"
-          output_file: "images/diagram.svg"
+          output_file: "output-diagram.svg"
           artifact_name: "my-diagram"
       - name: Get artifact
         uses: actions/download-artifact@v2
