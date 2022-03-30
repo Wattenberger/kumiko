@@ -11,13 +11,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Update diagram
-        uses: shixin-guo/repo-visualizer@main
+        uses: githubocto/repo-visualizer@main
         with:
           excluded_paths: "docs,.vscode,.gitignore,.nvmrc,.prettierrc"
           commit_message: "Update diagram [skip ci]"
           excluded_globs: "scripts/**.*"
           output_file: "output-diagram.svg"
           artifact_name: "my-diagram"
+          file_colors: '{"js":"#45aeb1"}'
       - name: Get artifact
         uses: actions/download-artifact@v2
         with:
