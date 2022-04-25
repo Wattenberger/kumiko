@@ -8,3 +8,4 @@ const indexPath = path.resolve(CWD, "public/index.html");
 const template = fs.readFileSync(templatePath, "utf8");
 
 fs.writeFileSync(indexPath, template);
+
