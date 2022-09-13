@@ -11,7 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Update diagram
-        uses: pohy/repo-visualizer@main
+        uses: githubnext/repo-visualizer@main
         with:
           excluded_paths: "docs,.vscode,.gitignore,.nvmrc,.prettierrc"
           commit_message: "Update diagram [skip ci]"
