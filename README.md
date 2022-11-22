@@ -7,7 +7,7 @@
 This [starter template](https://github.com/the-pudding/svelte-starter) aims for fast and easy web development with HMR, and pre-rendered HTML for optimal static hosting.
 
 _Please note: do not use or reproduce The Pudding logos or fonts without written permission._
-
+ 
 #### Features
 
 - [HMR](https://github.com/rixo/svelte-hmr) for lightning fast development
