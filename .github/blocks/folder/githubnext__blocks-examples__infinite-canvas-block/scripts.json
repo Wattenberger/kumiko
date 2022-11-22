@@ -1,0 +1,17 @@
+{
+  "items": {
+    "0": {
+      "id": 0,
+      "type": "text",
+      "text": "test1fgf",
+      "position": [
+        2400,
+        2450
+      ],
+      "dimensions": [
+        200,
+        100
+      ]
+    }
+  }
+}
