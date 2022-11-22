@@ -45,7 +45,6 @@ npm run dev
 ```
 
 Modify content in `src` and `public/assets`.
-test
 
 ## Deploy
 
