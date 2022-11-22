@@ -45,7 +45,6 @@ npm run dev
 ```
 
 Modify content in `src` and `public/assets`.
-test
 
 ## Deploy
 
@@ -55,7 +54,7 @@ npm run deploy
 
 This generates a directory called `ssr` with the server-side rendered static-hostable app.
 
-If deploying to github pages:
+If deploying to github pages:f
 
 ```bash
 make github
