@@ -1,7 +1,7 @@
 <script>
   import feather from "feather-icons";
   export const directions = ["n", "ne", "e", "se", "s", "sw", "w", "nw"];
-   
+
   export let name;
   export let direction = "n";
   export let strokeWidth;
