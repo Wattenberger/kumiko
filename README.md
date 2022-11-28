@@ -1,4 +1,4 @@
-# Svelte Starter   
+# Svelte Starter    
 
 ![Repo diagram test](./diagram-test.svg)
 
