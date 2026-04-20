@@ -1,0 +1,13 @@
+{
+  "title": "Add dark mode support",
+  "branch": "dark-add-2",
+  "baseRef": "master",
+  "tags": [],
+  "createdAt": "2026-04-16T03:35:40.259Z",
+  "initialPrompt": "add dark mode",
+  "setupScript": "#!/bin/bash\n# Generic setup script\n# Available variables: $MAIN_CHECKOUT, $WORKTREE_PATH, $BRANCH_NAME, $SOURCE_BRANCH\n\n# Copy environment and config files\nfor file in .env .env.local .envrc .tool-versions; do\n  if [ -f \"$MAIN_CHECKOUT/$file\" ]; then\n    cp \"$MAIN_CHECKOUT/$file\" \"./$file\"\n    echo \"Copied $file\"\n  fi\ndone\n\necho \"Config files copied\"",
+  "gitSync": {
+    "enabled": true,
+    "agentSyncLevel": "all"
+  }
+}
